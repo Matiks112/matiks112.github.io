@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Automod Metadata Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Discord Automod Metadata Generator</h1>
+    </header>
+
+    <nav>
+        <button id="ms-btn">Mention Spam</button>
+        <button id="ssc-btn">Suspected Spam Content</button>
+        <button id="cfw-btn">Commonly Flagged Words</button>
+        <button id="cw-btn">Custom Words</button>
+    </nav>
+
+    <section id="ms" class="section">
+        <h2>Mention Spam</h2>
+        <label for="ms-limit">Configure Limit (1-50):</label>
+        <input type="number" id="ms-limit" min="1" max="50" value="1">
+
+        <div class="response-options">
+            <label>Select Response:</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="ms-block"><label for="ms-block">Block Message</label>
+            </div>
+            <textarea id="ms-block-message" placeholder="Custom message (max 150 characters)" style="display: none;"></textarea>
+            <div class="checkbox-container">
+                <input type="checkbox" id="ms-alert"><label for="ms-alert">Send Alert</label>
+            </div>
+            <input type="text" id="ms-alert-channel" placeholder="Channel ID (required)" style="display: none;"></input>
+            <div class="checkbox-container">
+                <input type="checkbox" id="ms-timeout"><label for="ms-timeout">Timeout Member</label>
+            </div>
+            <select id="ms-timeout-duration" style="display: none;">
+                <option value="60s">60s</option>
+                <option value="5min">5min</option>
+                <option value="10min">10min</option>
+                <option value="1h">1h</option>
+                <option value="1d">1d</option>
+                <option value="1w">1w</option>
+            </select>
+        </div>
+
+        <label for="ms-allowed">Exempt Channels (comma-separated IDs):</label>
+        <input type="text" id="ms-allowed">
+        <label for="ms-roles">Exempt Roles (comma-separated IDs):</label>
+        <input type="text" id="ms-roles">
+
+        <button onclick="generateMetadata('ms')">Generate Metadata</button>
+    </section>
+
+    <section id="ssc" class="section">
+        <h2>Suspected Spam Content</h2>
+        <div class="response-options">
+            <label>Select Response:</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="ssc-block"><label for="ssc-block">Block Message</label>
+            </div>
+            <textarea id="ssc-block-message" placeholder="Custom message (max 150 characters)" style="display: none;"></textarea>
+            <div class="checkbox-container">
+                <input type="checkbox" id="ssc-alert"><label for="ssc-alert">Send Alert</label>
+            </div>
+            <input type="text" id="ssc-alert-channel" placeholder="Channel ID (required)" style="display: none;"></input>
+        </div>
+        <label for="ssc-allowed">Exempt Channels (comma-separated IDs):</label>
+        <input type="text" id="ssc-allowed">
+        <label for="ssc-roles">Exempt Roles (comma-separated IDs):</label>
+        <input type="text" id="ssc-roles">
+        <button onclick="generateMetadata('ssc')">Generate Metadata</button>
+    </section>
+
+    <section id="cfw" class="section">
+        <h2>Commonly Flagged Words</h2>
+        <label>Select Offensive Words:</label>
+        <div class="checkbox-container">
+            <input type="checkbox" id="cfw-severe"><label for="cfw-severe">Severe Profanity</label>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="cfw-insults"><label for="cfw-insults">Insults & Slurs</label>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="cfw-sexual"><label for="cfw-sexual">Sexual Content</label>
+        </div>
+        <label for="cfw-words">Allow words and phrases (comma-separated, max 60 characters each):</label>
+        <input type="text" id="cfw-words">
+        <div class="response-options">
+            <label>Select Response:</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="cfw-block"><label for="cfw-block">Block Message</label>
+            </div>
+            <textarea id="cfw-block-message" placeholder="Custom message (max 150 characters)" style="display: none;"></textarea>
+            <div class="checkbox-container">
+                <input type="checkbox" id="cfw-alert"><label for="cfw-alert">Send Alert</label>
+            </div>
+            <input type="text" id="cfw-alert-channel" placeholder="Channel ID (required)" style="display: none;"></input>
+        </div>
+        <label for="cfw-allowed">Exempt Channels (comma-separated IDs):</label>
+        <input type="text" id="cfw-allowed">
+        <label for="cfw-roles">Exempt Roles (comma-separated IDs):</label>
+        <input type="text" id="cfw-roles">
+        <button onclick="generateMetadata('cfw')">Generate Metadata</button>
+    </section>
+
+    <section id="cw" class="section">
+        <h2>Custom Words</h2>
+        <label for="cw-name">Rule Name:</label>
+        <input type="text" id="cw-name">
+        <label for="cw-words">Choose Your Words (comma-separated, max 60 characters each):</label>
+        <input type="text" id="cw-words">
+        <label for="cw-regex">Use regex patterns for advanced matching (comma-separated, max 260 characters each):</label>
+        <input type="text" id="cw-regex">
+        <div class="response-options">
+            <label>Select Response:</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="cw-block"><label for="cw-block">Block Message</label>
+            </div>
+            <textarea id="cw-block-message" placeholder="Custom message (max 150 characters)" style="display: none;"></textarea>
+            <div class="checkbox-container">
+                <input type="checkbox" id="cw-alert"><label for="cw-alert">Send Alert</label>
+            </div>
+            <input type="text" id="cw-alert-channel" placeholder="Channel ID (required)" style="display: none;"></input>
+            <div class="checkbox-container">
+                <input type="checkbox" id="cw-timeout"><label for="cw-timeout">Timeout Member</label>
+            </div>
+            <select id="cw-timeout-duration" style="display: none;">
+                <option value="60s">60s</option>
+                <option value="5min">5min</option>
+                <option value="10min">10min</option>
+                <option value="1h">1h</option>
+                <option value="1d">1d</option>
+                <option value="1w">1w</option>
+            </select>
+        </div>
+        <label for="cw-allowed">Exempt Channels (comma-separated IDs):</label>
+        <input type="text" id="cw-allowed">
+        <label for="cw-roles">Exempt Roles (comma-separated IDs):</label>
+        <input type="text" id="cw-roles">
+        <button onclick="generateMetadata('cw')">Generate Metadata</button>
+    </section>
+
+    <textarea id="metadata-output" readonly style="display: none;"></textarea>
+
+    <footer>
+        <p>Copyright (c) 2025 <a href="https://github.com/Matiks112">Matiks112</a></p>
+        <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
