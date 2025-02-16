@@ -1,17 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work In Progress</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Lato:wght@300&family=Poppins&family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Work In Progress</h1>
+    <!---header--->
+    <header>
+        <h2 class="logo">Portfo<span>lio</span></h2>
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
 
-    <p>This is a work in progress page that will lead to all of my projects. </p>
-    <p>I've currently finished one of my projects that is used for generating Discord AutoMod metadata</p>
-    <p>The project is called <a href="https://matiks112.github.io/generators/dc-automod/">Discord AutoMod Metadata Generator</a></p>
-    <p>Source code is available <a href="https://github.com/Matiks112/matiks112.github.io/tree/main/generators/dc-automod">here</a></p>
+    <!---home--->
+    <section class="home" id="home">
+        <section class="home-text">
+            <h4>Hello</h4>
+            <h1>I'm Matiks<span>112</span></h1>
+            <h3>IT & CyberSecurity Enthusiast</h3>
+            <a href="https://www.linkedin.com/in/m-grzybowski/" class="btn" target="_blank">View Resume</a>
+        </section>
+    </section>
+
+    <!---about--->
+     <section class="about" id="about">
+        <section class="about-img">
+            <img src="img/profile.jpg">
+        </section>
+
+        <section class="about-text">
+            <h2>About Me</h2>
+            <h4>Hi, My name is Mateusz</h4>
+            <p>I am a 4th Year Student of IT Technical School. I have a keen Interest in all IT related fields.</p><br>
+            <p>I am a Machine Learning Enthusiast, with additional interests in Cybersecurity and IT Support. I also enjoy developing small projects in my spare time.</p>
+            
+            <a href="#contact" class="btn">Contact Me</a>
+        </section>
+    </section>
+
+    <!-- Technical Languages -->
+    <section class="inner" id="languages">
+        <section class="Tech_header">
+            <h1>Languages</h1>
+        </section>
+        <section class="Tcontainer">
+            <section class="skill-box">
+                <section class="skill-title">
+                    <div class="tech_img">
+                        <img class="skill-icon" src="img/csharp.png" alt="C# Programming Language">
+                    </div>
+                    <h3>C#</h3>
+                </section>
+            </section>
+            <section class="skill-box">
+                <section class="skill-title">
+                    <div class="tech_img">
+                        <img class="skill-icon" src="img/html.png" alt="Html">
+                    </div>
+                    <h3>HTML</h3>
+                </section>
+            </section>
+            <section class="skill-box">
+                <section class="skill-title">
+                    <div class="tech_img">
+                        <img class="skill-icon" src="img/css.png" alt="Css">
+                    </div>
+                    <h3>Css</h3>
+                </section>
+            </section>
+            <section class="skill-box">
+                <section class="skill-title">
+                      <div class="tech_img">
+                        <img class="skill-icon" src="img/js.png" alt="JavaScript">
+                      </div>
+                      <h3>JavaScript</h3>
+                </section>
+            </section>
+        </section>
+    </section>
+     
+    <!-- -Experience- -->
+    <section class="experience" id="experience">
+        <div class="main-text">
+            <h2>My Experiences</h2>
+        </div>
+        <br>
+        <div class="experience-content">
+            <div class="box">
+                <img src="img/ac.jpg" >
+                <h3>AdventureCraft</h3>
+                <h4>
+                    <span>
+                        Head Developer
+                    </span>
+                </h4>
+                <br>
+                <p>
+                    • Worked on multiple seasons for the Server. 
+                    <br>
+                    • Worked with the Dynamic Staff of AdventureCraft.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- -portfolio- -->
+    <section class="projects" id="projects">
+        <section class="main-text">
+            <h2>My Projects</h2>
+            <h4>Some Of Side Projects I've Been Working On</h4>
+        </section>
+
+        <div class="projects-content">
+            <div class="row">
+                <a href="https://matiks112.github.io/generators/dc-automod" target="_blank">
+                    <img src="img/dc-automod.png">
+                </a>
+                    <div class="main-row">
+                        <div class="row-text">
+                            <h6>Web App development</h6>
+                        </div>
+                    </div>
+                <h3>Discord AutoModeration Metadata Generator</h3>
+            </div>
+
+            <div class="row">
+                <a href="https://www.curseforge.com/minecraft/modpacks/adventure-craft-by-aidenmouse" target="_blank">
+                    <img src="img/adv-craft.png">
+                </a>
+                <div class="main-row">
+                    <div class="row-text">
+                        <h6>Modpack Development</h6>
+                    </div>
+                </div>
+                <h3>AdventureCraft Minecraft Modpack</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- -contact- -->
+    <section class="contact" id="contact">
+        <section class="contact-text">
+            <h2>Contact Me</h2>
+            <h4>Need to get in touch?</h4>
+            <p>Write to me using the email below!</p>
+            <div class="contact-list">
+                <li><a href="#contact">Local Address</a></li>
+                <li><a href="#contact">mati23032006@gmail.com</a></li>
+                <a href="mailto: mati23032006@gmail.com">
+                    <button class="btn">
+                        Let's Chat
+                    </button>
+                </a>
+            </div>
+            <div class="contact-icons">
+                <a href="https://www.linkedin.com/in/m-grzybowski/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
+                <a href="https://discordapp.com/users/553254039224320011" target="_blank"><i class='bx bxl-discord-alt' ></i></a>
+                <a href="https://matiks112.github.io/" target="_blank"><i class='bx bxl-github' ></i></a>
+            </div>
+        </section> 
+    </section>
+
+    <a href="#" class="top"><i class='bx bx-up-arrow-alt' ></i></a>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
