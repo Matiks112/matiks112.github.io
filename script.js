@@ -1,4 +1,9 @@
 const header = document.querySelector("header");
+const year = new Date().getFullYear();
+const age = year - 2006;
+const outputElement = document.getElementById("age");
+
+outputElement.textContent = age;
 
 window.addEventListener ("scroll", function() {
     header.classList.toggle ("sticky", window.scrollY >0);
