@@ -160,6 +160,7 @@ header.sticky{
     height: auto;
     width: 100%;
     max-width: 460px;
+    border-radius: 20px;
 }
 
 .main-text{
